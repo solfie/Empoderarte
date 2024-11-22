@@ -1,14 +1,50 @@
 from django.db import models
 
+from Empoderarte.usuarios.models import Perfil
+
 class Artista(models.Model):
-    nome = models.CharField(max_length=100)
-    usuario = models.CharField(max_length=50)
+    usuario = models.OneToOneField(Perfil, on_delete=models.CASCADE, related_name='perfil')  # Relacionamento 1-para-1 com User
     bio = models.TextField(null=True, blank=True)  # Torna o campo bio opcional
-    data_nascimento = models.DateField
-    foto = models.ImageField(upload_to='artistas/fotos/', null=True, blank=True)  # Torna o campo foto opcional
 
     def __str__(self):
         return self.usuario
+
+class Categorias(models.Model):
+    RENASCIMENTO = 'REN'
+    REALISMO = 'REA'
+    IMPRESSIONISMO = 'IMP'
+    EXPRESSIONISMO = 'EXP'
+    ABSTRACIONISMO = 'ABS'
+    SURREALISMO = 'SUR'
+    CUBISMO = 'CUB'
+    ARTEPOP = 'ART'
+    ARTECONTEMPORÂNEA = 'ARC'
+    MINIMALISMO = 'MIN'
+    FUTURISMO = 'FUT'
+    ÓLEOSOBRETELA = 'OST'
+    ACRILICO = 'ACR'
+    AQUARELA = 'AQU'
+    GUACHE = 'GUA'
+
+
+    SETORES_CHOICES = [
+        (RENASCIMENTO, 'Renascimento'),
+        (REALISMO, 'Realismo'),
+        (IMPRESSIONISMO, 'Impressionismo'),
+        (EXPRESSIONISMO, 'Expressionismo'),
+        (ABSTRACIONISMO, 'Abstracionismo'),
+        (SURREALISMO, 'Surrealismo'),
+        (CUBISMO, 'Cubista'),
+        (ARTEPOP, 'Arte Pop'),
+        (ARTECONTEMPORÂNEA, 'Arte Contemporânea'),
+        (MINIMALISMO, 'Minimalismo'),
+        (FUTURISMO, 'Futurismo'),
+        (ÓLEOSOBRETELA, 'Óleo Sobre Tela'),
+        (ACRILICO, 'Acrílico'),
+        (AQUARELA, 'Aquarela'),
+        (GUACHE, 'Guache'),
+       
+    ]
 
 class Obra(models.Model):
     artista = models.ForeignKey(Artista, on_delete=models.CASCADE, related_name='obras')
@@ -17,6 +53,7 @@ class Obra(models.Model):
     preco = models.DecimalField(max_digits=10, decimal_places=2)
     imagem = models.ImageField(upload_to='obras/imagens/')
     disponivel = models.BooleanField
+    categorias = models.ManyToManyField(Categorias, blank=True)
 
     def __str__(self):
         return self.titulo
