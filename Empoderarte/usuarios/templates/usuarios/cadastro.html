@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro | Empoderarte</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="logo">
+            <h1>Empoderarte</h1>
+            <p>A arte vem do feminino</p>
+        </div>
+        <form method="POST" class="form-cadastro">
+            {% csrf_token %}
+            <h2>CADASTRO</h2>
+            
+            <!-- Campos do User -->
+            {{ usuario_form.as_p }}
+
+            <!-- Campos do Perfil -->
+            {{ perfil_form.as_p }}
+
+            <button type="submit">Cadastrar</button>
+        </form>
+    </div>
+</body>
+</html>

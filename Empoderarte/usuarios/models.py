@@ -12,7 +12,6 @@ class Interesse(models.Model):
     FOTOGRAFIA = 'FOT'
     GRAFITTI = 'GRA'
 
-
     SETORES_CHOICES = [
         (FEMINISMO, 'Feminismo'),
         (ESCULTURA, 'Escultura'),
@@ -22,11 +21,15 @@ class Interesse(models.Model):
         (LITERATURA, 'Literatura'),
         (FOTOGRAFIA, 'Fotografia'),
         (GRAFITTI, 'Grafitti'),
-        # Outras opções de interesse podem ser add
     ]
 
+    nome = models.CharField(max_length=3, choices=SETORES_CHOICES, unique=True)
 
-# Modelo de Perfil de Usuário
+    def __str__(self):
+        return dict(self.SETORES_CHOICES).get(self.nome, self.nome)
+
+
+# PERFIL DO USUÁRIO
 class Perfil(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='perfil')  # Relacionamento 1-para-1 com User
     foto = models.ImageField(upload_to='fotos_perfis/', blank=True, null=True)  # Foto de perfil
