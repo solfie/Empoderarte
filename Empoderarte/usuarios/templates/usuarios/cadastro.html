@@ -1,11 +1,11 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-  
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro | Empoderarte</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 <body>
     <div class="container">
@@ -16,13 +16,32 @@
         <form method="POST" class="form-cadastro">
             {% csrf_token %}
             <h2>CADASTRO</h2>
-            
-            <!-- Campos do User -->
-            {{ usuario_form.as_p }}
 
-            <!-- Campos do Perfil -->
-            {{ perfil_form.as_p }}
+            <!-- Nome completo -->
+            <label for="username">Nome completo</label>
+            {{ usuario_form.username }}
 
+            <!-- Senha -->
+            <label for="password">Senha</label>
+            {{ usuario_form.password }}
+
+            <!-- Email -->
+            <label for="email">Email</label>
+            {{ usuario_form.email }}
+
+            <!-- Campo Data de Nascimento -->
+            <label for="birth_date">Data de nascimento</label>
+            {{ perfil_form.data_nascimento }}
+
+            <!-- Campo Interesses (Checkboxes) -->
+            <label for="interesses">Marque seus interesses:</label>
+            {{ perfil_form.interesses }}
+
+            <!-- Campo Tipo de Usuário (Radio Buttons) -->
+            <label for="tipo_usuario">Selecione o tipo de usuário:</label>
+            {{ perfil_form.tipo_usuario }}
+
+            <!-- Botão de cadastro -->
             <button type="submit">Cadastrar</button>
         </form>
     </div>
