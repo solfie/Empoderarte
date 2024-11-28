@@ -29,13 +29,10 @@ class Interesse(models.Model):
         return dict(self.SETORES_CHOICES).get(self.nome, self.nome)
 
 
-# PERFIL DO USUÁRIO
 class Perfil(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='perfil')  # Relacionamento 1-para-1 com User
-    foto = models.ImageField(upload_to='fotos_perfis/', blank=True, null=True)  # Foto de perfil
-    data_nascimento = models.DateField(null=True, blank=True)  # Data de nascimento
-    eh_artista = models.BooleanField(default=False)  # Boolean se é artista ou usuário comum
-    interesses = models.ManyToManyField(Interesse, blank=True)  # Interesses do usuário
+    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='perfil')
+    data_nascimento = models.DateField(null=True, blank=True)
+    interesses = models.ManyToManyField(Interesse, blank=True)
 
     def __str__(self):
         return f"Perfil de {self.user.username}"

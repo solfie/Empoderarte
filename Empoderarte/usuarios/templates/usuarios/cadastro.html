@@ -1,4 +1,3 @@
-{% load static %}
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -19,27 +18,39 @@
 
             <!-- Nome completo -->
             <label for="username">Nome completo</label>
-            {{ usuario_form.username }}
+            <div>
+                {{ usuario_form.username }}
+            </div>
 
             <!-- Senha -->
             <label for="password">Senha</label>
-            {{ usuario_form.password }}
+            <div>
+                {{ usuario_form.password }}
+            </div>
 
             <!-- Email -->
             <label for="email">Email</label>
-            {{ usuario_form.email }}
+            <div>
+                {{ usuario_form.email }}
+            </div>
 
-            <!-- Campo Data de Nascimento -->
+            <!-- Data de Nascimento -->
             <label for="birth_date">Data de nascimento</label>
-            {{ perfil_form.data_nascimento }}
+            <div>
+                {{ perfil_form.data_nascimento }}
+            </div>
 
-            <!-- Campo Interesses (Checkboxes) -->
+            <!-- Interesses -->
             <label for="interesses">Marque seus interesses:</label>
-            {{ perfil_form.interesses }}
+            <div>
+                {{ perfil_form.interesses }}
+            </div>
 
-            <!-- Campo Tipo de Usuário (Radio Buttons) -->
+            <!-- Tipo de Usuário -->
             <label for="tipo_usuario">Selecione o tipo de usuário:</label>
-            {{ perfil_form.tipo_usuario }}
+            <div>
+                {{ perfil_form.tipo_usuario }}
+            </div>
 
             <!-- Botão de cadastro -->
             <button type="submit">Cadastrar</button>
