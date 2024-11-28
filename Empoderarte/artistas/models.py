@@ -1,13 +1,13 @@
 from django.db import models
-
-from Empoderarte.usuarios.models import Perfil
+from usuarios.models import Perfil
 
 class Artista(models.Model):
     usuario = models.OneToOneField(Perfil, on_delete=models.CASCADE, related_name='perfil')  # Relacionamento 1-para-1 com User
     bio = models.TextField(null=True, blank=True)  # Torna o campo bio opcional
 
     def __str__(self):
-        return self.usuario
+        return f"Artista: {self.usuario.user.username}"
+
 
 class Categorias(models.Model):
     RENASCIMENTO = 'REN'
@@ -26,7 +26,6 @@ class Categorias(models.Model):
     AQUARELA = 'AQU'
     GUACHE = 'GUA'
 
-
     SETORES_CHOICES = [
         (RENASCIMENTO, 'Renascimento'),
         (REALISMO, 'Realismo'),
@@ -43,8 +42,13 @@ class Categorias(models.Model):
         (ACRILICO, 'Acrílico'),
         (AQUARELA, 'Aquarela'),
         (GUACHE, 'Guache'),
-       
     ]
+
+    nome = models.CharField(max_length=3, choices=SETORES_CHOICES, unique=True)
+
+    def __str__(self):
+        return dict(self.SETORES_CHOICES).get(self.nome, self.nome)
+
 
 class Obra(models.Model):
     artista = models.ForeignKey(Artista, on_delete=models.CASCADE, related_name='obras')
@@ -52,7 +56,7 @@ class Obra(models.Model):
     descricao = models.TextField()
     preco = models.DecimalField(max_digits=10, decimal_places=2)
     imagem = models.ImageField(upload_to='obras/imagens/')
-    disponivel = models.BooleanField
+    disponivel = models.BooleanField(default=True)  # Corrigido
     categorias = models.ManyToManyField(Categorias, blank=True)
 
     def __str__(self):
