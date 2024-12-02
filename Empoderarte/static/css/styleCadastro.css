@@ -6,27 +6,31 @@ body {
     padding: 0;
 }
 
-/* Centralizar a área principal */
+/* Container principal com layout flex */
 .container {
     display: flex;
-    flex-direction: column;
+    justify-content: space-between;
     align-items: center;
-    justify-content: center;
     height: 100vh;
-    text-align: center;
+    padding: 0 10%; /* Margem horizontal */
+    box-sizing: border-box;
 }
 
-/* Estilização do logo */
+/* Estilização da logo */
+.logo {
+    text-align: left;
+}
+
 .logo h1 {
     font-size: 2.5em;
     color: #594a3c; /* Marrom escuro */
-    margin-bottom: 5px;
+    margin: 0;
 }
 
 .logo p {
     font-size: 1.2em;
     color: #8d6e63; /* Marrom mais claro */
-    margin: 0;
+    margin-top: 5px;
 }
 
 /* Estilo do formulário */
@@ -35,8 +39,7 @@ body {
     border-radius: 8px;
     padding: 20px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    width: 90%;
-    max-width: 400px; /* Responsivo */
+    width: 40%; /* Ajuste de largura */
     text-align: left;
 }
 
@@ -44,20 +47,24 @@ body {
     color: #594a3c; /* Marrom escuro */
     text-align: center;
     margin-bottom: 20px;
+    font-size: 1.8em; /* Maior destaque */
 }
 
+/* Títulos das seções */
 .form-cadastro label {
+    font-size: 1.1em;
     font-weight: bold;
-    margin-top: 10px;
-    display: block;
     color: #594a3c; /* Marrom */
+    margin-top: 20px;
+    display: block;
 }
 
+/* Inputs, selects e botões */
 .form-cadastro input,
 .form-cadastro select,
 .form-cadastro button {
     width: 100%;
-    margin-top: 5px;
+    margin-top: 10px;
     padding: 10px;
     border-radius: 5px;
     border: 1px solid #ddd;
@@ -71,11 +78,41 @@ body {
     color: white;
     border: none;
     cursor: pointer;
-    margin-top: 15px;
+    margin-top: 20px;
     font-size: 1em;
     transition: background-color 0.3s;
 }
 
 .form-cadastro button:hover {
     background-color: #8d6e63; /* Marrom mais claro */
+}
+
+/* Checkboxes: Alinhamento em grade */
+.form-check {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.form-check input {
+    margin-right: 10px;
+}
+
+.check-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Duas colunas */
+    gap: 10px; /* Espaço entre os itens */
+}
+
+/* Espaçamento extra entre as seções */
+.form-cadastro .section {
+    margin-top: 20px;
+}
+
+/* Ajustes visuais gerais */
+.form-cadastro label.section-title {
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #3d2f24; /* Marrom mais escuro */
 }

@@ -1,58 +1,76 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro | Empoderarte</title>
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/styleCadastro.css' %}">
 </head>
 <body>
     <div class="container">
         <div class="logo">
-            <h1>Empoderarte</h1>
+            <img src="{% static 'images/logo.png' %}" alt="Girl in a jacket" width="500" height="600">
             <p>A arte vem do feminino</p>
         </div>
         <form method="POST" class="form-cadastro">
             {% csrf_token %}
             <h2>CADASTRO</h2>
-
+        
             <!-- Nome completo -->
-            <label for="username">Nome completo</label>
-            <div>
-                {{ usuario_form.username }}
+            <div class="section">
+                <label for="username" class="section-title">Nome completo</label>
+                <div>
+                    {{ usuario_form.username }}
+                </div>
             </div>
-
+        
             <!-- Senha -->
-            <label for="password">Senha</label>
-            <div>
-                {{ usuario_form.password }}
+            <div class="section">
+                <label for="password" class="section-title">Senha</label>
+                <div>
+                    {{ usuario_form.password }}
+                </div>
             </div>
-
+        
             <!-- Email -->
-            <label for="email">Email</label>
-            <div>
-                {{ usuario_form.email }}
+            <div class="section">
+                <label for="email" class="section-title">Email</label>
+                <div>
+                    {{ usuario_form.email }}
+                </div>
             </div>
-
+        
             <!-- Data de Nascimento -->
-            <label for="birth_date">Data de nascimento</label>
-            <div>
-                {{ perfil_form.data_nascimento }}
+            <div class="section">
+                <label for="birth_date" class="section-title">Data de nascimento</label>
+                <div>
+                    {{ perfil_form.data_nascimento }}
+                </div>
             </div>
-
+        
             <!-- Interesses -->
-            <label for="interesses">Marque seus interesses:</label>
-            <div>
-                {{ perfil_form.interesses }}
+            <div class="section">
+                <label for="interesses" class="section-title">Marque seus interesses:</label>
+                <div class="check-container">
+                    {% for interesse in interesses %}
+                    <div class="form-check">
+                        <input type="checkbox" name="interesses" value="{{ interesse.id }}" id="interesse_{{ interesse.id }}" class="form-check-input">
+                        <label for="interesse_{{ interesse.id }}" class="form-check-label">{{ interesse.get_nome_display }}</label>
+                    </div>
+                    {% endfor %}
+                </div>
             </div>
-
+        
             <!-- Tipo de Usuário -->
-            <label for="tipo_usuario">Selecione o tipo de usuário:</label>
-            <div>
-                {{ perfil_form.tipo_usuario }}
+            <div class="section">
+                <label for="tipo_usuario" class="section-title">Selecione o tipo de usuário:</label>
+                <div>
+                    {{ perfil_form.tipo_usuario }}
+                </div>
             </div>
-
-            <!-- Botão de cadastro -->
+        
+            <!-- Botão -->
             <button type="submit">Cadastrar</button>
         </form>
     </div>

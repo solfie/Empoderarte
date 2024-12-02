@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from .forms import CadastroUsuarioForm, PerfilForm
-from django.contrib.auth.models import User
+from usuarios.models import Interesse
 
 def cadastro_usuario(request):
     if request.method == 'POST':
@@ -31,7 +31,11 @@ def cadastro_usuario(request):
         usuario_form = CadastroUsuarioForm()
         perfil_form = PerfilForm()
 
+    # Pega todos os interesses disponíveis
+    interesses = Interesse.objects.all()
+
     return render(request, 'usuarios/cadastro.html', {
         'usuario_form': usuario_form,
-        'perfil_form': perfil_form
+        'perfil_form': perfil_form,
+        'interesses': interesses  # Passando os interesses para o template
     })
