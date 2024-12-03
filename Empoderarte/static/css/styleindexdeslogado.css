@@ -1,0 +1,88 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5f5;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #efe8d8;
+    padding: 10px 20px;
+}
+
+.logo h1 {
+    font-size: 24px;
+    margin: 0;
+}
+
+.logo p {
+    font-size: 14px;
+    margin: 0;
+}
+
+.pesquisa {
+    display: flex;
+    align-items: center;
+}
+
+.pesquisa input {
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.pesquisa button {
+    margin-left: 5px;
+    padding: 5px 10px;
+    background-color: #ccc;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.usuario {
+    display: flex;
+    align-items: center;
+}
+
+.usuario span {
+    margin-right: 10px;
+}
+
+.usuario .icone {
+    width: 30px;
+    height: 30px;
+    background-color: #6b5b4a;
+    border-radius: 50%;
+}
+
+main {
+    padding: 20px;
+}
+
+section h2 {
+    margin-bottom: 10px;
+}
+
+.lista-artistas, .lista-obras {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 10px;
+}
+
+.artista, .obra {
+    background-color: #d4c4a8;
+    padding: 10px;
+    text-align: center;
+    border-radius: 4px;
+}
+
+.artista .foto, .obra .imagem {
+    width: 100%;
+    height: 100px;
+    background-color: #c2b094;
+    border-radius: 4px;
+}
