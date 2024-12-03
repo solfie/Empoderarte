@@ -6,72 +6,92 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro | Empoderarte</title>
     <link rel="stylesheet" href="{% static 'css/styleCadastro.css' %}">
+    <script>
+        // Função para alternar entre os formulários
+        function toggleForm(formType) {
+            if (formType === 'cadastro') {
+                document.getElementById('cadastro-form').style.display = 'block';
+                document.getElementById('login-form').style.display = 'none';
+                document.getElementById('cadastro-btn').classList.add('active');
+                document.getElementById('login-btn').classList.remove('active');
+            } else if (formType === 'login') {
+                document.getElementById('cadastro-form').style.display = 'none';
+                document.getElementById('login-form').style.display = 'block';
+                document.getElementById('login-btn').classList.add('active');
+                document.getElementById('cadastro-btn').classList.remove('active');
+            }
+        }
+    </script>
 </head>
-<body>
+<body onload="toggleForm('cadastro')">
     <div class="container">
         <div class="logo">
-            <img src="{% static 'images/logo.png' %}" alt="Girl in a jacket" width="500" height="600">
-            <p>A arte vem do feminino</p>
+            <img src="{% static 'img/logo.png' %}" width="600" height="600">
         </div>
-        <form method="POST" class="form-cadastro">
+
+        <!-- Botões de alternância para Login e Cadastro -->
+        <div class="toggle-buttons">
+            <button id="cadastro-btn" class="toggle-btn active" onclick="toggleForm('cadastro')">Cadastro</button>
+            <button id="login-btn" class="toggle-btn" onclick="toggleForm('login')">Login</button>
+        </div>
+
+        <!-- Formulário de Cadastro -->
+        <form method="POST" class="form-cadastro" id="cadastro-form">
             {% csrf_token %}
             <h2>CADASTRO</h2>
-        
-            <!-- Nome completo -->
+            <!-- Formulário de Cadastro (igual ao seu formulário atual) -->
             <div class="section">
-                <label for="username" class="section-title">Nome completo</label>
-                <div>
-                    {{ usuario_form.username }}
-                </div>
+                <label for="name" class="section-title">Nome completo</label>
+                <div>{{ usuario_form.username }}</div>
             </div>
-        
-            <!-- Senha -->
+            <div class="section">
+                <label for="username" class="section-title">Nome de usuário</label>
+                <div>{{ usuario_form.username }}</div>
+            </div>
             <div class="section">
                 <label for="password" class="section-title">Senha</label>
-                <div>
-                    {{ usuario_form.password }}
-                </div>
+                <div>{{ usuario_form.password }}</div>
             </div>
-        
-            <!-- Email -->
             <div class="section">
                 <label for="email" class="section-title">Email</label>
-                <div>
-                    {{ usuario_form.email }}
-                </div>
+                <div>{{ usuario_form.email }}</div>
             </div>
-        
-            <!-- Data de Nascimento -->
             <div class="section">
                 <label for="birth_date" class="section-title">Data de nascimento</label>
-                <div>
-                    {{ perfil_form.data_nascimento }}
-                </div>
+                <div>{{ perfil_form.data_nascimento }}</div>
             </div>
-        
-            <!-- Interesses -->
             <div class="section">
                 <label for="interesses" class="section-title">Marque seus interesses:</label>
-                <div class="check-container">
+                <div class="interesses-container">
                     {% for interesse in interesses %}
-                    <div class="form-check">
-                        <input type="checkbox" name="interesses" value="{{ interesse.id }}" id="interesse_{{ interesse.id }}" class="form-check-input">
-                        <label for="interesse_{{ interesse.id }}" class="form-check-label">{{ interesse.get_nome_display }}</label>
-                    </div>
+                        <div class="form-check">
+                            <input type="checkbox" name="interesses" value="{{ interesse.id }}" id="interesse_{{ interesse.id }}" class="form-check-input">
+                            <label for="interesse_{{ interesse.id }}" class="form-check-label">{{ interesse.get_nome_display }}</label>
+                        </div>
                     {% endfor %}
                 </div>
             </div>
-        
-            <!-- Tipo de Usuário -->
             <div class="section">
                 <label for="tipo_usuario" class="section-title">Selecione o tipo de usuário:</label>
-                <div>
-                    {{ perfil_form.tipo_usuario }}
-                </div>
+                <div>{{ perfil_form.tipo_usuario }}</div>
             </div>
-        
-            <!-- Botão -->
             <button type="submit">Cadastrar</button>
+        </form>
+
+        <!-- Formulário de Login -->
+        <form method="POST" class="form-login" id="login-form" style="display:none;">
+            {% csrf_token %}
+            <h2>LOGIN</h2>
+            <!-- Formulário de Login -->
+            <div class="section">
+                <label for="email" class="section-title">Email</label>
+                <input type="email" name="email" id="login-email" class="form-control" placeholder="Digite seu email" required>
+            </div>
+            <div class="section">
+                <label for="password" class="section-title">Senha</label>
+                <input type="password" name="password" id="login-password" class="form-control" placeholder="Digite sua senha" required>
+            </div>
+            <button type="submit">Login</button>
         </form>
     </div>
 </body>

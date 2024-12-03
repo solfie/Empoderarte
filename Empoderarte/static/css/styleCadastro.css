@@ -34,7 +34,8 @@ body {
 }
 
 /* Estilo do formulário */
-.form-cadastro {
+.form-cadastro,
+.form-login {
     background-color: #ffffff; /* Branco */
     border-radius: 8px;
     padding: 20px;
@@ -51,20 +52,24 @@ body {
 }
 
 /* Títulos das seções */
-.form-cadastro label {
+.form-cadastro label ,
+.form-login label{
     font-size: 1.1em;
     font-weight: bold;
     color: #594a3c; /* Marrom */
-    margin-top: 20px;
+    margin-top: 1px;
     display: block;
 }
 
 /* Inputs, selects e botões */
 .form-cadastro input,
 .form-cadastro select,
-.form-cadastro button {
+.form-cadastro button,
+.form-login input,
+.form-login select,
+.form-login button,
+.form-login button {
     width: 100%;
-    margin-top: 10px;
     padding: 10px;
     border-radius: 5px;
     border: 1px solid #ddd;
@@ -73,7 +78,8 @@ body {
 }
 
 /* Botão de cadastro */
-.form-cadastro button {
+.form-cadastro button,
+.form-login button {
     background-color: #594a3c; /* Marrom escuro */
     color: white;
     border: none;
@@ -83,36 +89,100 @@ body {
     transition: background-color 0.3s;
 }
 
-.form-cadastro button:hover {
+.form-cadastro button:hover,
+.form-login button:hover {
     background-color: #8d6e63; /* Marrom mais claro */
 }
 
-/* Checkboxes: Alinhamento em grade */
-.form-check {
-    display: flex;
-    align-items: center;
-    margin-bottom: 10px;
-}
-
-.form-check input {
-    margin-right: 10px;
-}
-
-.check-container {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr); /* Duas colunas */
-    gap: 10px; /* Espaço entre os itens */
-}
-
 /* Espaçamento extra entre as seções */
-.form-cadastro .section {
+.form-cadastro .section,
+.form-login{
     margin-top: 20px;
 }
 
 /* Ajustes visuais gerais */
-.form-cadastro label.section-title {
+.form-cadastro label.section-title,
+.form-login label.section-title {
     font-size: 1.2em;
     font-weight: bold;
-    margin-bottom: 10px;
+    margin-top: 30px;
     color: #3d2f24; /* Marrom mais escuro */
+}
+
+.form-check-input {
+    position: relative;
+    top: -1.5px;
+}
+
+/* Estilo geral */
+.interesses-container {
+    display: flex;
+    flex-wrap: wrap; /* Permite quebrar linhas caso haja muitos interesses */
+    gap: 10px; /* Espaçamento entre os itens */
+}
+
+/* Estiliza cada checkbox e texto */
+.form-check {
+    margin-top: 10px;
+    display: flex;
+    align-items: center; /* Alinha verticalmente */
+    gap: 5px; /* Espaço entre checkbox e texto */
+}
+
+.form-control {
+    margin-top: 10px;
+}
+
+.radio {
+    position: relative;
+    top: 2px;
+}
+
+/* Novo estilo para os radio buttons */
+.radio-container {
+    display: flex;
+    flex-direction: column; /* Alinha verticalmente as opções */
+    gap: 10px; /* Espaçamento entre as opções */
+}
+
+.radio-item {
+    margin-left:-50px;
+    display: flex;
+    align-items: center; /* Alinha verticalmente o rádio e o texto */
+   
+}
+
+.form-radio-label {
+    align-items:flex-start;
+    font-size: 1em;
+    font-weight: normal;
+    color: #594a3c;
+}
+
+/* Botões de alternância */
+.toggle-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.toggle-btn {
+    background-color: #f4f4f4;
+    border: 1px solid #ddd;
+    padding: 10px 20px;
+    font-size: 1.1em;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.toggle-btn:hover {
+    background-color: #e7dcc3;
+}
+
+.toggle-btn.active {
+    background-color: #594a3c; /* Marrom escuro */
+    color: white;
+    border: none;
 }

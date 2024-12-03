@@ -5,7 +5,7 @@ from .models import Perfil, Interesse
 class CadastroUsuarioForm(forms.ModelForm):
     class Meta:
         model = User
-        fields = ['username', 'password', 'email']  # Campos do User
+        fields = ['name', 'username', 'password', 'email']  # Campos do User
         widgets = {
             'password': forms.PasswordInput(attrs={'class': 'form-control'}),
             'email': forms.EmailInput(attrs={'class': 'form-control'}),
@@ -18,7 +18,6 @@ class PerfilForm(forms.ModelForm):
         widget=forms.RadioSelect(attrs={'class': 'form-control'}),
         label="Tipo de Usuário"
     )
-
     class Meta:
         model = Perfil
         fields = ['data_nascimento', 'interesses']  # Campos do Perfil
