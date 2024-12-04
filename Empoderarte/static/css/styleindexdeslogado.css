@@ -1,88 +1,112 @@
-body {
-    font-family: Arial, sans-serif;
+/* Resetando o padrão do navegador */
+* {
     margin: 0;
     padding: 0;
-    background-color: #f5f5f5;
+    box-sizing: border-box;
 }
 
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f9f6f1;
+    color: #6b5b4a;
+}
+
+/* Ajuste do header */
 header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #efe8d8;
     padding: 10px 20px;
+    background-color: #f5e8d9;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
-.logo h1 {
-    font-size: 24px;
-    margin: 0;
+header .logo img {
+    width: 150px;
+    height: auto;
 }
 
-.logo p {
-    font-size: 14px;
-    margin: 0;
-}
-
-.pesquisa {
+header .pesquisa {
     display: flex;
     align-items: center;
+    gap: 10px;
 }
 
-.pesquisa input {
-    padding: 5px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+header .pesquisa input {
+    padding: 10px;
+    border: 2px solid #d4c4a8;
+    border-radius: 20px;
+    width: 250px;
+    font-size: 16px;
+    outline: none;
 }
 
-.pesquisa button {
-    margin-left: 5px;
-    padding: 5px 10px;
-    background-color: #ccc;
+header .pesquisa button {
+    background-color: #6b5b4a;
+    color: white;
     border: none;
-    border-radius: 4px;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     cursor: pointer;
 }
 
-.usuario {
+header .usuario {
     display: flex;
     align-items: center;
+    gap: 10px;
 }
 
-.usuario span {
-    margin-right: 10px;
-}
-
-.usuario .icone {
-    width: 30px;
-    height: 30px;
+header .usuario button {
+    padding: 10px 20px;
+    font-size: 14px;
+    color: #fff;
     background-color: #6b5b4a;
-    border-radius: 50%;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    text-transform: uppercase;
 }
 
 main {
     padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
-section h2 {
-    margin-bottom: 10px;
+h2 {
+    font-size: 24px;
+    color: #6b5b4a;
+    margin-bottom: 20px;
 }
 
 .lista-artistas, .lista-obras {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    gap: 10px;
+    gap: 15px;
 }
 
 .artista, .obra {
-    background-color: #d4c4a8;
-    padding: 10px;
+    background-color: #f5e8d9;
+    border: 1px solid #d4c4a8;
+    border-radius: 10px;
     text-align: center;
-    border-radius: 4px;
+    padding: 15px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.artista:hover, .obra:hover {
+    transform: translateY(-5px);
 }
 
 .artista .foto, .obra .imagem {
     width: 100%;
     height: 100px;
-    background-color: #c2b094;
-    border-radius: 4px;
+    background-color: #d4c4a8;
+    border-radius: 10px;
+    margin-bottom: 10px;
 }

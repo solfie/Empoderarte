@@ -1,46 +1,48 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Empoderarte+</title>
-    <link rel="stylesheet" href="{% static 'css/estilo.css' %}">
+    <link rel="stylesheet" href="{% static 'css/styleindexdeslogado.css' %}">
 </head>
 <body>
     <header>
         <div class="logo">
-            <h1>Empoderarte+</h1>
-            <p>A arte vem do feminino</p>
+            <img src="{% static 'img/logo.png' %}" alt="Empoderarte+">
         </div>
         <div class="pesquisa">
-            <input type="text" placeholder="Pesquisar">
+            <input type="text" placeholder="Buscar...">
             <button>🔍</button>
         </div>
         <div class="usuario">
-            <span>Rita Lis</span>
-            <div class="icone"></div>
+            <button>CADASTRO</button>
+            <button>LOGIN</button>
         </div>
     </header>
 
     <main>
-        <section class="artistas">
+        <section>
             <h2>Artistas</h2>
             <div class="lista-artistas">
                 {% for artista in artistas %}
                 <div class="artista">
                     <div class="foto"></div>
-                    <p>{{ artista.nome }}</p>
+                    <p>{{ artista.usuario.user.first_name }}</p>
                 </div>
                 {% endfor %}
             </div>
         </section>
 
-        <section class="obras">
+        <section>
             <h2>Obras</h2>
             <div class="lista-obras">
                 {% for obra in obras %}
                 <div class="obra">
-                    <div class="imagem"></div>
+                    <div class="imagem">
+                        <img src="{% static obra.imagem %}">
+                    </div>
                     <p>{{ obra.titulo }}</p>
                 </div>
                 {% endfor %}

@@ -5,7 +5,7 @@ from .models import Perfil, Interesse
 class CadastroUsuarioForm(forms.ModelForm):
     class Meta:
         model = User
-        fields = ['name', 'username', 'password', 'email']  # Campos do User
+        fields = ['username', 'password', 'email']  # Campos do User
         widgets = {
             'password': forms.PasswordInput(attrs={'class': 'form-control'}),
             'email': forms.EmailInput(attrs={'class': 'form-control'}),

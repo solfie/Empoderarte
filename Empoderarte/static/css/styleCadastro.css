@@ -9,9 +9,9 @@ body {
 /* Container principal com layout flex */
 .container {
     display: flex;
-    justify-content: space-between;
+
     align-items: center;
-    height: 100vh;
+    height: 60vh;
     padding: 0 10%; /* Margem horizontal */
     box-sizing: border-box;
 }
