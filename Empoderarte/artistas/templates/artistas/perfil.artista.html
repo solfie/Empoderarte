@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil de Usuário</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Você pode incluir o CSS aqui -->
+</head>
+<body>
+    <div class="perfil-container">
+        <div class="avatar">
+            <!-- Substitua com a foto do usuário -->
+            <img src="https://via.placeholder.com/150" alt="Avatar" />
+        </div>
+
+        <div class="informacoes">
+            <div class="nome">
+                <h1>{{ user.first_name }} {{ user.last_name }}</h1>
+            </div>
+
+            <div class="biografia">
+                <div class="card">
+                    <h2>Biografia</h2>
+                    <p>Este é um texto de exemplo para a biografia do usuário. O usuário pode adicionar informações sobre si mesmo aqui.</p>
+                </div>
+            </div>
+
+            <!-- Seção de Obras de Arte -->
+            <div class="obras">
+                <h2>Minhas Obras de Arte</h2>
+                <div class="obras-grid">
+                    <div class="obra">
+                        <img src="https://via.placeholder.com/200" alt="Obra 1" />
+                    </div>
+                    <div class="obra">
+                        <img src="https://via.placeholder.com/200" alt="Obra 2" />
+                    </div>
+                    <div class="obra">
+                        <img src="https://via.placeholder.com/200" alt="Obra 3" />
+                    </div>
+                    <div class="obra">
+                        <img src="https://via.placeholder.com/200" alt="Obra 4" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

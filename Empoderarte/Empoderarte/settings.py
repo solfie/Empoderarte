@@ -58,8 +58,10 @@ ROOT_URLCONF = 'Empoderarte.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
-        'APP_DIRS': True,
+        
+        'DIRS': [BASE_DIR / 'templates',],  # Diretório global de templates
+        
+        'APP_DIRS': True,  # Permite que o Django procure dentro de pastas de templates em cada app
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',

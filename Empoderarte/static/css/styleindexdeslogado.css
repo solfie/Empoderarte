@@ -14,29 +14,33 @@ body {
 /* Ajuste do header */
 header {
     display: flex;
-    justify-content: space-between;
+    justify-content: center; /* Centraliza os itens horizontalmente */
     align-items: center;
     padding: 10px 20px;
     background-color: #f5e8d9;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    gap: 20px; /* Espaço entre os itens */
 }
 
 header .logo img {
-    width: 150px;
+    width: 300px;
     height: auto;
 }
 
 header .pesquisa {
+    flex-grow: 1; /* Faz o campo de pesquisa ocupar o espaço central */
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 10px;
 }
 
 header .pesquisa input {
-    padding: 10px;
+    padding: 12px;
     border: 2px solid #d4c4a8;
     border-radius: 20px;
-    width: 250px;
+    width: 100%;
+    max-width: 600px; /* Tamanho máximo */
     font-size: 16px;
     outline: none;
 }
@@ -71,6 +75,7 @@ header .usuario button {
     text-transform: uppercase;
 }
 
+/* Ajuste para imagens e conteúdo */
 main {
     padding: 20px;
     max-width: 1200px;
@@ -78,15 +83,17 @@ main {
 }
 
 h2 {
+    margin-top: 6px;
     font-size: 24px;
     color: #6b5b4a;
     margin-bottom: 20px;
 }
 
+/* Estilo para artistas e obras */
 .lista-artistas, .lista-obras {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    gap: 15px;
+    gap: 20px;
 }
 
 .artista, .obra {
@@ -94,19 +101,42 @@ h2 {
     border: 1px solid #d4c4a8;
     border-radius: 10px;
     text-align: center;
-    padding: 15px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease;
+    padding: 20px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .artista:hover, .obra:hover {
-    transform: translateY(-5px);
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
+/* Imagens de tamanho uniforme */
 .artista .foto, .obra .imagem {
-    width: 100%;
-    height: 100px;
-    background-color: #d4c4a8;
+    width: 150px;
+    height: 150px;
+    margin: 0 auto 10px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     border-radius: 10px;
-    margin-bottom: 10px;
+    background-color: #d4c4a8; /* Cor de fundo para imagens ausentes */
+}
+
+.artista img, .obra img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Responsividade para telas menores */
+@media (max-width: 768px) {
+    header {
+        flex-wrap: wrap; /* Ajusta os itens em várias linhas */
+        gap: 15px;
+    }
+
+    header .pesquisa input {
+        max-width: 100%; /* Ocupa todo o espaço disponível */
+    }
 }

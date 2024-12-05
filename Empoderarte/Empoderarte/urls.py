@@ -20,5 +20,6 @@ from django.urls import path, include
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('usuarios/', include('usuarios.urls')),  # Inclui as rotas do app "usuarios"
-    path('common/', include('common.urls'))
+    path('common/', include('common.urls')),
+    path('artistas/', include('artistas.urls')),
 ]

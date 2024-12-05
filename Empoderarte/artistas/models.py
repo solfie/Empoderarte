@@ -4,7 +4,7 @@ from usuarios.models import Perfil
 class Artista(models.Model):
     usuario = models.OneToOneField(Perfil, on_delete=models.CASCADE, related_name='perfil')  # Relacionamento 1-para-1 com User
     bio = models.TextField(null=True, blank=True)  # Torna o campo bio opcional
-
+    foto = models.ImageField(upload_to='static/img/')
     def __str__(self):
         return f"Artista: {self.usuario.user.username}"
 

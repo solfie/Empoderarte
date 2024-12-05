@@ -6,6 +6,151 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Empoderarte+</title>
     <link rel="stylesheet" href="{% static 'css/styleindexdeslogado.css' %}">
+    <style>
+        /* Resetando o padrão do navegador */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f9f6f1;
+            color: #6b5b4a;
+        }
+
+        /* Ajuste do header */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: #f5e8d9;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        header .logo img {
+            width: 150px;
+            height: auto;
+        }
+
+        header .pesquisa {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        header .pesquisa input {
+            padding: 10px;
+            border: 2px solid #d4c4a8;
+            border-radius: 20px;
+            width: 250px;
+            font-size: 16px;
+            outline: none;
+        }
+
+        header .pesquisa button {
+            background-color: #6b5b4a;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+
+        header .usuario {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        header .usuario button {
+            padding: 10px 15px;
+            font-size: 14px;
+            color: #fff;
+            background-color: #6b5b4a;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-transform: uppercase;
+        }
+
+        header .usuario button:hover {
+            background-color: #5a4938;
+        }
+
+        main {
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h2 {
+            font-size: 24px;
+            color: #6b5b4a;
+            margin-bottom: 20px;
+        }
+
+        .lista-artistas, .lista-obras {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .artista, .obra {
+            background-color: #f5e8d9;
+            border: 1px solid #d4c4a8;
+            border-radius: 10px;
+            text-align: center;
+            padding: 20px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .artista:hover, .obra:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .artista .foto {
+            width: 100px;
+            height: 100px;
+            background-color: #d4c4a8;
+            border-radius: 50%;
+            margin: 0 auto 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .artista img, .obra img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+
+            header .pesquisa {
+                width: 100%;
+                justify-content: space-between;
+            }
+
+            .lista-artistas, .lista-obras {
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            }
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -28,7 +173,9 @@
             <div class="lista-artistas">
                 {% for artista in artistas %}
                 <div class="artista">
-                    <div class="foto"></div>
+                    <div class="foto">
+                        <img src="{% static artista.foto %}" alt="{{ artista.usuario.user.first_name }}">
+                    </div>
                     <p>{{ artista.usuario.user.first_name }}</p>
                 </div>
                 {% endfor %}
@@ -41,7 +188,7 @@
                 {% for obra in obras %}
                 <div class="obra">
                     <div class="imagem">
-                        <img src="{% static obra.imagem %}">
+                        <img src="{% static obra.imagem %}"alt="{{ obra.titulo }}" class="imgObras">
                     </div>
                     <p>{{ obra.titulo }}</p>
                 </div>

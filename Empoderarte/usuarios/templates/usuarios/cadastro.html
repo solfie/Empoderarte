@@ -36,7 +36,7 @@
         </div>
 
         <!-- Formulário de Cadastro -->
-        <form method="POST" class="form-cadastro" id="cadastro-form">
+        <form method="POST" class="form-cadastro" id="cadastro-form" action="{% url 'cadastro_usuario' %}">
             {% csrf_token %}
             <h2>CADASTRO</h2>
             <!-- Formulário de Cadastro (igual ao seu formulário atual) -->

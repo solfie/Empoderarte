@@ -36,6 +36,8 @@ body {
 /* Estilo do formulário */
 .form-cadastro,
 .form-login {
+    position: relative;
+    top: 35%;
     background-color: #ffffff; /* Branco */
     border-radius: 8px;
     padding: 20px;
