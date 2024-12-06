@@ -140,3 +140,11 @@ h2 {
         max-width: 100%; /* Ocupa todo o espaço disponível */
     }
 }
+
+a{
+    text-decoration: none;  /* Remove o sublinhado */
+    color: white;  
+}
+ #sub{
+    color:#6b5b4a;
+ }

@@ -1,6 +1,9 @@
 from django.urls import path
-from .views import cadastro_usuario
+from . import views
 
+
+app_name = "usuarios"
 urlpatterns = [
-    path('cadastro/', cadastro_usuario, name='cadastro_usuario'),
+    path('cadastro/', views.cadastro_usuario, name='cadastro_usuario'),
+    path('<int:usuario_id>/', views.perfil_usuario, name='perfil_usuario'),
 ]

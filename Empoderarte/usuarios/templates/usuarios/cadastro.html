@@ -34,9 +34,9 @@
             <button id="cadastro-btn" class="toggle-btn active" onclick="toggleForm('cadastro')">Cadastro</button>
             <button id="login-btn" class="toggle-btn" onclick="toggleForm('login')">Login</button>
         </div>
-
+        
         <!-- Formulário de Cadastro -->
-        <form method="POST" class="form-cadastro" id="cadastro-form" action="{% url 'cadastro_usuario' %}">
+        <form method="POST" class="form-cadastro" id="cadastro-form">
             {% csrf_token %}
             <h2>CADASTRO</h2>
             <!-- Formulário de Cadastro (igual ao seu formulário atual) -->
@@ -71,7 +71,7 @@
                 <label for="tipo_usuario" class="section-title">Selecione o tipo de usuário:</label>
                 <div>{{ perfil_form.tipo_usuario }}</div>
             </div>
-            <button type="submit">Cadastrar</button>
+            <button type="submit"><button><a  href="{% url 'common:indexDeslogado' %}">Cadastrar</a></button></button>
         </form>
 
         <!-- Formulário de Login -->
@@ -87,7 +87,7 @@
                 <label for="password" class="section-title">Senha</label>
                 <input type="password" name="password" id="login-password" class="form-control" placeholder="Digite sua senha" required>
             </div>
-            <button type="submit">Login</button>
+            <button type="submit"><button><a  href="{% url 'common:indexDeslogado' %}">Login</a></button></button>
         </form>
     </div>
 </body>

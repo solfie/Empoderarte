@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from django.contrib.auth.hashers import make_password
 from .forms import CadastroUsuarioForm, PerfilForm
+from .models import Perfil
 
 def cadastro_usuario(request):
     if request.method == 'POST':
@@ -29,4 +30,13 @@ def cadastro_usuario(request):
     'user_form': user_form,
     'perfil_form': perfil_form,
 })
+
+from django.shortcuts import render, get_object_or_404
+# from usuarios.models import usuarios, Obra
+# View para a página index_deslogado
+def perfil_usuario (request, usuario_id):
+    usuario = get_object_or_404(Perfil, user__id=usuario_id)
+    return render (request, "usuarios/perfil_usuario.html", {"usuario": usuario})
+
+    
 

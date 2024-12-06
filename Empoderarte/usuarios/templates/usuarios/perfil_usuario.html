@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Empoderarte+</title>
     <link rel="stylesheet" href="{% static 'css/styleindexdeslogado.css' %}">
-    
 </head>
+
 <body>
     <header>
         <div class="logo">
@@ -17,9 +17,13 @@
             <input type="text" placeholder="Buscar...">
             <button>🔍</button>
         </div>
-        <div class="usuario" >
-            <button><a  href="{% url 'usuarios:cadastro_usuario' %}">CADASTRO</a></button>
-            <button><a  href="{% url 'usuarios:cadastro_usuario' %}">LOGIN</a></button>
+        <div class="usuario">
+            <button><a href="{% url 'usuarios:cadastro_usuario' %}">CADASTRO</a></button>
+            <button><a href="{% url 'usuarios:cadastro_usuario' %}">LOGIN</a></button>
+        </div>
+        <!-- Foto do usuário -->
+        <div class="foto-usuario">
+            <img src="{% static 'img/foto_usuario.jpg' %}" alt="Foto do usuário" class="foto-perfil">
         </div>
     </header>
 
@@ -29,12 +33,10 @@
             <div class="lista-artistas">
                 {% for artista in artistas %}
                 <div class="artista">
-                    <a id="sub" href="{% url 'artistas:perfil_artista' artista.id %}"> 
                     <div class="foto">
                         <img src="{% static artista.foto %}" alt="{{ artista.usuario.user.first_name }}">
                     </div>
                     <p>{{ artista.usuario.user.first_name }}</p>
-                </a>
                 </div>
                 {% endfor %}
             </div>
@@ -45,12 +47,10 @@
             <div class="lista-obras">
                 {% for obra in obras %}
                 <div class="obra">
-                   
                     <div class="imagem">
-                        <img src="{% static obra.imagem %}"alt="{{ obra.titulo }}" class="imgObras">
+                        <img src="{% static obra.imagem %}" alt="{{ obra.titulo }}" class="imgObras">
                     </div>
                     <p>{{ obra.titulo }}</p>
-          
                 </div>
                 {% endfor %}
             </div>
