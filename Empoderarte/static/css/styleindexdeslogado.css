@@ -16,7 +16,8 @@ header {
     display: flex;
     justify-content: center; /* Centraliza os itens horizontalmente */
     align-items: center;
-    padding: 10px 20px;
+    height: 180px; /* Define uma altura fixa para o header */
+    padding: 0 20px; /* Remove o padding vertical */
     background-color: #f5e8d9;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     gap: 20px; /* Espaço entre os itens */
@@ -46,7 +47,7 @@ header .pesquisa input {
 }
 
 header .pesquisa button {
-    background-color: #6b5b4a;
+    background-color: #a8937e;
     color: white;
     border: none;
     border-radius: 50%;
@@ -148,3 +149,58 @@ a{
  #sub{
     color:#6b5b4a;
  }
+
+ footer {
+    background-color: #9d876f;
+    color: #3b342c;
+    padding: 10px 0;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.footer-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.footer-section {
+    
+    flex: 1;
+    margin: 10px;
+    min-width: 200px;
+}
+
+.footer-section h4 {
+    margin-bottom: 15px;
+    font-size: 1.2em;
+}
+
+.footer-section ul {
+    
+    list-style: none;
+    padding: 0;
+}
+
+.footer-section ul li {
+    margin: 5px 0;
+}
+
+.footer-section ul li a {
+    color: #3b342c;
+    text-decoration: none;
+}
+
+.footer-section ul li a:hover {
+    text-decoration: underline;
+}
+
+.footer-bottom {
+    border-top: 1px solid #3b342c;
+    padding-top: 10px;
+    margin-top: 20px;
+    font-size: 0.9em;
+}

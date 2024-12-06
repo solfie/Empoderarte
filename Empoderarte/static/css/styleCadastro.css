@@ -18,20 +18,11 @@ body {
 
 /* Estilização da logo */
 .logo {
+    position: relative;
+    top: 25%;
     text-align: left;
 }
 
-.logo h1 {
-    font-size: 2.5em;
-    color: #594a3c; /* Marrom escuro */
-    margin: 0;
-}
-
-.logo p {
-    font-size: 1.2em;
-    color: #8d6e63; /* Marrom mais claro */
-    margin-top: 5px;
-}
 
 /* Estilo do formulário */
 .form-cadastro,
@@ -42,7 +33,7 @@ body {
     border-radius: 8px;
     padding: 20px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    width: 40%; /* Ajuste de largura */
+    width: 600px; /* Ajuste de largura */
     text-align: left;
 }
 
@@ -56,10 +47,11 @@ body {
 /* Títulos das seções */
 .form-cadastro label ,
 .form-login label{
-    font-size: 1.1em;
+    font-size: 1.10em;
     font-weight: bold;
     color: #594a3c; /* Marrom */
-    margin-top: 1px;
+    margin-top: 3px;
+    padding-top: 3px;    
     display: block;
 }
 
@@ -102,18 +94,10 @@ body {
     margin-top: 20px;
 }
 
-/* Ajustes visuais gerais */
-.form-cadastro label.section-title,
-.form-login label.section-title {
-    font-size: 1.2em;
-    font-weight: bold;
-    margin-top: 30px;
-    color: #3d2f24; /* Marrom mais escuro */
-}
-
 .form-check-input {
     position: relative;
     top: -1.5px;
+    
 }
 
 /* Estilo geral */
@@ -127,6 +111,7 @@ body {
 .form-check {
     margin-top: 10px;
     display: flex;
+    font-size: 0.9em;
     align-items: center; /* Alinha verticalmente */
     gap: 5px; /* Espaço entre checkbox e texto */
 }
@@ -148,14 +133,14 @@ body {
 }
 
 .radio-item {
-    margin-left:-50px;
     display: flex;
     align-items: center; /* Alinha verticalmente o rádio e o texto */
    
 }
 
 .form-radio-label {
-    align-items:flex-start;
+    position: relative;
+    left: -88%;
     font-size: 1em;
     font-weight: normal;
     color: #594a3c;
@@ -163,10 +148,12 @@ body {
 
 /* Botões de alternância */
 .toggle-buttons {
+    position: relative;
     display: flex;
     justify-content: center;
     gap: 20px;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
+    left: 5%;
 }
 
 .toggle-btn {
@@ -192,4 +179,15 @@ body {
 a{
     text-decoration: none;  /* Remove o sublinhado */
     color: white;  
+}
+.interesses-container {
+    display: flex;
+    flex-wrap: wrap; /* Permite que itens fiquem lado a lado e quebrem linha */
+    gap: 15px; /* Espaçamento horizontal e vertical entre os itens */
+}
+
+.form-check {
+    display: flex;
+    align-items: center;
+    gap: 5px; /* Espaçamento entre checkbox e o texto */
 }

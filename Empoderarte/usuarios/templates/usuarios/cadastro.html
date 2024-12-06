@@ -36,43 +36,63 @@
         </div>
         
         <!-- Formulário de Cadastro -->
-        <form method="POST" class="form-cadastro" id="cadastro-form">
-            {% csrf_token %}
-            <h2>CADASTRO</h2>
-            <!-- Formulário de Cadastro (igual ao seu formulário atual) -->
-            <div class="section">
-                <label for="username" class="section-title">Nome de usuário</label>
-                <div>{{ usuario_form.username }}</div>
+        <div class="container">
+            <div class="logo">
             </div>
-            <div class="section">
-                <label for="password" class="section-title">Senha</label>
-                <div>{{ usuario_form.password }}</div>
-            </div>
-            <div class="section">
-                <label for="email" class="section-title">Email</label>
-                <div>{{ usuario_form.email }}</div>
-            </div>
-            <div class="section">
-                <label for="birth_date" class="section-title">Data de nascimento</label>
-                <div>{{ perfil_form.data_nascimento }}</div>
-            </div>
-            <div class="section">
-                <label for="interesses" class="section-title">Marque seus interesses:</label>
-                <div class="interesses-container">
-                    {% for interesse in interesses %}
-                        <div class="form-check">
-                            <input type="checkbox" name="interesses" value="{{ interesse.id }}" id="interesse_{{ interesse.id }}" class="form-check-input">
-                            <label for="interesse_{{ interesse.id }}" class="form-check-label">{{ interesse.get_nome_display }}</label>
-                        </div>
-                    {% endfor %}
+            
+            <form class="form-cadastro" id="cadastro-form" style="display:block;"method="POST" enctype="multipart/form-data" class="form-cadastro">
+                    {% csrf_token %}
+              <h2>Cadastro</h2>
+              
+              <!-- Campo Nome de Usuário -->
+              <label for="nome">Nome de Usuário</label>
+              <input type="text" id="nome" name="nome" placeholder="Digite seu nome">
+              
+              <!-- Campo Senha -->
+              <label for="senha">Senha</label>
+              <input type="password" id="senha" name="senha" placeholder="Digite sua senha">
+              
+              <!-- Campo Email -->
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" placeholder="Digite seu email">
+              
+              <!-- Data de Nascimento -->
+              <label for="data-nascimento">Data de Nascimento</label>
+              <input type="date" id="data-nascimento" name="data-nascimento">
+              
+              <!-- Upload Foto de Perfil -->
+              <label for="foto-perfil">Foto de Perfil</label>
+              <input type="file" id="foto-perfil" name="foto-perfil">
+
+              <label class="section-title">Interesses</label>
+              <div class="interesses-container">
+                  {% for interesse in perfil_form.interesses %}
+                  <div class="form-check">
+                      {{ interesse }}
+                  </div>
+                  {% endfor %}
+              </div> 
+        
+                        <!-- Tipo de Usuário -->
+                <label class="section-title">Tipo de Usuário</label>
+                <div class="radio-container">
+                <div class="radio-item">
+                    <input type="radio" id="usuario-comum" name="tipo-usuario" value="comum">
+                    <label for="usuario" class="form-radio-label">Usuário</label>
                 </div>
-            </div>
-            <div class="section">
-                <label for="tipo_usuario" class="section-title">Selecione o tipo de usuário:</label>
-                <div>{{ perfil_form.tipo_usuario }}</div>
-            </div>
-            <button type="submit"><button><a  href="{% url 'common:indexDeslogado' %}">Cadastrar</a></button></button>
-        </form>
+                <div class="radio-item">
+                    <input type="radio" id="artista" name="tipo-usuario" value="artista" onclick="toggleBiografia(true)">
+                    <label for="artista" class="form-radio-label">Artista</label>
+                </div>
+                </div>
+                
+                <!-- Campo Biografia -->
+                <div id="biografia-section" style="display: none;">
+                <label for="biografia">Biografia</label>
+                <textarea id="biografia" name="biografia" rows="4" placeholder="Escreva sobre você"></textarea>
+                </div>
+                <button type="submit"><a  href="{% url 'common:indexDeslogado' %}">Cadastrar</a></button>
+            </form>
 
         <!-- Formulário de Login -->
         <form method="POST" class="form-login" id="login-form" style="display:none;">
@@ -87,8 +107,14 @@
                 <label for="password" class="section-title">Senha</label>
                 <input type="password" name="password" id="login-password" class="form-control" placeholder="Digite sua senha" required>
             </div>
-            <button type="submit"><button><a  href="{% url 'common:indexDeslogado' %}">Login</a></button></button>
+            <button type="submit"><a  href="{% url 'common:indexDeslogado' %}">Login</a></button>
         </form>
+        <script>
+            function toggleBiografia(isArtista) {
+                const biografiaSection = document.getElementById('biografia-section');
+                biografiaSection.style.display = isArtista ? 'block' : 'none';
+              }
+        </script>
     </div>
 </body>
 </html>

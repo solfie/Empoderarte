@@ -5,7 +5,6 @@ from django.db import models
 # class Artista(models.Model):
 #     nome = models.CharField(max_length=200)
 #     biografia = models.TextField(blank=True, null=True)
-#     foto = models.ImageField(upload_to='artistas/', blank=True, null=True)  # Foto do artista
 
 #     def __str__(self):
 #         return self.nome

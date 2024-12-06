@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -10,7 +11,7 @@
     <div class="perfil-container">
         <div class="avatar">
             <!-- Substitua com a foto do usuário -->
-            <img src="https://via.placeholder.com/150" alt="Avatar" />
+            <img src="{% static artista.foto %}" alt="Avatar" />
         </div>
 
         <div class="informacoes">
@@ -21,7 +22,7 @@
             <div class="biografia">
                 <div class="card">
                     <h2>Biografia</h2>
-                    <p>Este é um texto de exemplo para a biografia do usuário. O usuário pode adicionar informações sobre si mesmo aqui.</p>
+                    <p>{{ artista.usuario.perfil.bio}}</p>
                 </div>
             </div>
 
@@ -45,5 +46,30 @@
             </div>
         </div>
     </div>
+    <footer>
+        <div class="footer-container">
+            <div class="footer-section">
+                <h4>Sobre</h4>
+                <p>O Empoderarte+ é uma plataforma dedicada a conectar mulheres e divulgar suas obras para o mundo.</p>
+            </div>
+            <div class="footer-section">
+                <h4>Links úteis</h4>
+                <ul>
+                    <li><a href="{% url 'common:indexDeslogado' %}">Início</a></li>
+                    <li><a href="{% url 'usuarios:cadastro_usuario' %}">Cadastro</a></li>
+                    <li><a href="{% url 'usuarios:cadastro_usuario' %}">Login</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Contato</h4>
+                <p>Email: contato@empoderarte.com</p>
+                <p>Telefone: (11) 99999-9999</p>
+                <p>Endereço: Rua da Arte, 123 - Espírito Santo, ES</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; {{ ano_atual }} Empoderarte+. Todos os direitos reservados.</p>
+        </div>
+    </footer>
 </body>
 </html>
